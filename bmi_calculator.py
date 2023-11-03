@@ -26,7 +26,7 @@ if st.button("Submit"):
     try:
         bmi = weight / (height_m ** 2)
     except ZeroDivisionError as e:
-        print("Please Enter Your Height")
+        st.write("Please Enter Your Height")
     else:    
         st.write("Your BMI is: {:.2f}".format(bmi))
         if bmi < 18.5:
