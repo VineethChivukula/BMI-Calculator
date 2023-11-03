@@ -34,8 +34,7 @@ if st.button("Submit"):
     st.write("Address:", address)
     st.write("Hobbies:", hobbies_selected)
     st.write("Weight:", weight)
-    st.write("Height:", height/100,end="")
-    st.write( "m")
+    st.write(f"Height: {height/100}m")
     st.write("Your BMI is: {:.2f}".format(bmi))
     if bmi < 18.5:
         st.write("You are underweight")
