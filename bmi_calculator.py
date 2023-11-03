@@ -21,7 +21,7 @@ if(age<=0):
 if(name is None):
         st.write("Please Enter Your Name")
 try:
-    bmi = weight / (height_m ** 2)
+    bmi = weight / ((height / 100) ** 2)
 except ZeroDivisionError as e:
     st.write("Please Enter Your Height")
     sys.exit(1)
@@ -34,8 +34,8 @@ if st.button("Submit"):
     st.write("Address:", address)
     st.write("Hobbies:", hobbies_selected)
     st.write("Weight:", weight)
-    st.write("Height:", height)
-    height_m = height / 100
+    st.write("Height:", height/100,end="")
+    st.write( "m")
     st.write("Your BMI is: {:.2f}".format(bmi))
     if bmi < 18.5:
         st.write("You are underweight")
