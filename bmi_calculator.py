@@ -1,7 +1,9 @@
 import streamlit as st
 import sys
+
 # Define the webpage title
 st.title("BMI Calculator")
+
 # Add the input controls to the webpage
 name = st.text_input("Name:")
 gender = st.radio("Gender:", ("Male", "Female", "Other"))
@@ -14,6 +16,16 @@ for hobby in hobbies:
         hobbies_selected.append(hobby)
 weight = st.number_input("Weight in kg:", min_value=0, max_value=500)
 height = st.number_input("Height in cm:", min_value=0, max_value=300)
+if(age<=0):
+        st.write("Please Enter Correct Age")
+if(name is None):
+        st.write("Please Enter Your Name")
+try:
+    bmi = weight / (height_m ** 2)
+except ZeroDivisionError as e:
+    st.write("Please Enter Your Height")
+    sys.exit(1)
+    
 # Retrieve the user's personal details and Calculate BMI
 if st.button("Submit"):
     st.write("Name:", name)
@@ -24,18 +36,12 @@ if st.button("Submit"):
     st.write("Weight:", weight)
     st.write("Height:", height)
     height_m = height / 100
-    try:
-        bmi = weight / (height_m ** 2)
-    except ZeroDivisionError as e:
-        st.write("Please Enter Your Height")
-        sys.exit(1)
-    else:    
-        st.write("Your BMI is: {:.2f}".format(bmi))
-        if bmi < 18.5:
-            st.write("You are underweight")
-        elif bmi >= 18.5 and bmi < 25:
-            st.write("You are normal weight")
-        elif bmi >= 25 and bmi < 30:
-            st.write("You are overweight")
-        else:
-            st.write("You are obese")
+    st.write("Your BMI is: {:.2f}".format(bmi))
+    if bmi < 18.5:
+        st.write("You are underweight")
+    elif bmi >= 18.5 and bmi < 25:
+        st.write("You are normal weight")
+    elif bmi >= 25 and bmi < 30:
+        st.write("You are overweight")
+    else:
+        st.write("You are obese")
