@@ -1,4 +1,5 @@
 import streamlit as st
+import sys
 # Define the webpage title
 st.title("BMI Calculator")
 # Add the input controls to the webpage
@@ -27,6 +28,7 @@ if st.button("Submit"):
         bmi = weight / (height_m ** 2)
     except ZeroDivisionError as e:
         st.write("Please Enter Your Height")
+        sys.exit(1)
     else:    
         st.write("Your BMI is: {:.2f}".format(bmi))
         if bmi < 18.5:
